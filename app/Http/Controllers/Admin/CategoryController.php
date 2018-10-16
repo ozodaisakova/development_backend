@@ -23,12 +23,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return response()->json("OK",200);
+        return response()->json("OK",201);
     }
 
     public function show(Category $category)
     {
-        
+        return response()->json($category);  
     }
 
     public function edit(Category $category)
