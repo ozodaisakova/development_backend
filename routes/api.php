@@ -14,10 +14,11 @@ use Illuminate\Http\Request;
 */
 Route::group(['prefix'=>'v1', 'namespace'=>'Admin'], function(){
     Route::resources([
-        '/category'=>'CategoryController',
-        '/product'=>'ProductController'
+        '/catalog'=>'CatalogController',
+        '/product'=>'ProductController',
+        '/information'=>'InformationController'
     ]);
-    Route::get('/products_of_category', 'ProductController@products_of_controller');
+    Route::get('/products-of-catalog', 'ProductController@products_of_catalog');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

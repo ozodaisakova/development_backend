@@ -7,10 +7,11 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
+    protected $table = 'products';
     protected $fillable=[
         'name', 
-        'slug',
-        'category_id',
+        'catalog_id',
+        'colors',
         'price',
         'description',
         'width',
@@ -19,12 +20,12 @@ class Product extends Model
         'material',
         'complect',
         'karkas',
-        'image',
+        'images',
         'compound',
         'hidden',
         'available'];
-
-        public function setSlugAttribute($value){
-            $this->attributes['slug']=Str::slug(mb_substr($this->name, 0, 40).\Carbon\Carbon::now()->format('dmyHi'), '-');
+        
+        public function catalog(){
+            return $this->belongsTo('App\Catalog');
         }
 }

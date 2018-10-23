@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug')->unique();
-            $table->integer('category_id');
-            $table->integer('price');
+            $table->integer('catalog_id')->nullable();
+            $table->integer('price')->nullable();
+            $table->json('colors')->nullable();        
             $table->text('description')->nullable();
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();
@@ -26,8 +26,9 @@ class CreateProductsTable extends Migration
             $table->text('material')->nullable();
             $table->text('complect')->nullable();
             $table->text('karkas')->nullable();
-            $table->text('image')->nullable();
+            $table->json('images')->nullable();
             $table->text('compound')->nullable();
+            $table->json('recommendation')->nullable();
             $table->tinyInteger('hidden')->default(0);
             $table->tinyInteger('available')->default(1);
             $table->timestamps();
