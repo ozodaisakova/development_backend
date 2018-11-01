@@ -16,9 +16,12 @@ Route::group(['prefix'=>'v1', 'namespace'=>'Admin'], function(){
     Route::resources([
         '/catalog'=>'CatalogController',
         '/product'=>'ProductController',
-        '/information'=>'InformationController'
+        '/information'=>'InformationController',
     ]);
     Route::get('/products-of-catalog', 'ProductController@products_of_catalog');
+    //Заказдардың маршруттары
+    Route::get('/productorder', 'ProductOrderController@all');
+    Route::post('/productorder', 'ProductOrderController@store');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

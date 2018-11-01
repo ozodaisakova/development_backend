@@ -25,6 +25,11 @@ class Product extends Model
         'hidden',
         'available'];
         
+        public function productorders(){
+            return $this->hasMany('App\ProductOrder');
+        }
+        
+
         public function catalog(){
             return $this->belongsTo('App\Catalog');
         }

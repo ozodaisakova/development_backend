@@ -37,7 +37,10 @@ class ProductController extends Controller
 
     public function show($product)
     {
-        return response()->json(Product::with('catalog')->where('id', $product)->get(), 200);        
+        $json=null;
+        $json = Product::with('catalog')->where('id', $product)->get();
+        if(count($json)!=0) return response()->json($json, 200);
+        else return response()->json("Страница не найдена!", 404);
     }
 
     public function edit(Product $product)
