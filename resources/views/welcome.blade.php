@@ -66,12 +66,15 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-           
+
 
             <div class="content">
                 <div class="title m-b-md">
                    OZI_BACKEND
                 </div>
+                <center>
+                    <img src="/image/ubuntu.jpg" alt="" width="300px;">
+                </center>
             </div>
         </div>
     </body>

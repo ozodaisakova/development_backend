@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('catalog_id')->nullable();
             $table->integer('price')->nullable();
-            $table->json('colors')->nullable();        
+            $table->text('colors')->nullable();        
             $table->text('description')->nullable();
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();
@@ -26,9 +26,9 @@ class CreateProductsTable extends Migration
             $table->text('material')->nullable();
             $table->text('complect')->nullable();
             $table->text('karkas')->nullable();
-            $table->json('images')->nullable();
+            $table->text('images')->nullable();
             $table->text('compound')->nullable();
-            $table->json('recommendation')->nullable();
+            $table->text('recommendation')->nullable();
             $table->tinyInteger('hidden')->default(0);
             $table->tinyInteger('available')->default(1);
             $table->timestamps();

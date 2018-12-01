@@ -11,13 +11,8 @@ class CatalogController extends Controller
     public function index()
     {
         return response()->json(['catalogs' => Catalog::all()],200);
-    }
-
-    public function create()
-    {
-        
-    }
-
+    }  
+    
     
     public function store(Request $request)
     {
@@ -33,37 +28,23 @@ class CatalogController extends Controller
         return response()->json($catalog, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Catalog  $catalog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Catalog $catalog)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Catalog  $catalog
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Catalog $catalog)
     {
-        //
+        if($request->name=='') return response()->json("Поле <имя каталога> не заполнено",400);
+        else if($request->icon=='') return response()->json("Поле <иконка каталога> не заполнено",400);
+        else if($request->hidden=='') return response()->json("Значение <видимость каталога> не выбрано",400);
+        $catalog_id = $request->id;
+        $catalog = Catalog::find($catalog_id);
+        if($catalog){
+            return response()->json("Каталог с такой ID не существует!",400);
+        }else{
+            return response()->json("Пока все нормально", 200);
+        }
+       
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Catalog  $catalog
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Catalog $catalog)
     {
-        //
+        
     }
 }

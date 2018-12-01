@@ -10,6 +10,11 @@ use Illuminate\Http\Response;
 class ProductController extends Controller
 {
 
+    public function index()
+    {
+        return response()->json(['products' => Product::all()],200);
+    }  
+
     public function products_of_catalog(Request $request){
         if($request->catalog_id==null) $catalog_id=0; else  $catalog_id=$request->catalog_id;
         if($request->column==null) $column='id'; else $column=$request->column;
@@ -18,16 +23,6 @@ class ProductController extends Controller
         return response()->json(Product::where('catalog_id', $catalog_id)->orderBy($column, $order)->paginate($per),200);        
     } 
 
-
-    public function index()
-    {
-        
-    }
-
-    public function create()
-    {
-              
-    }
 
     public function store(Request $request)
     {
@@ -41,11 +36,6 @@ class ProductController extends Controller
         $json = Product::with('catalog')->where('id', $product)->get();
         if(count($json)!=0) return response()->json($json, 200);
         else return response()->json("Страница не найдена!", 404);
-    }
-
-    public function edit(Product $product)
-    {
-        
     }
 
     public function update(Request $request, Product $product)
