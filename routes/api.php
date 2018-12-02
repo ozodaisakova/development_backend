@@ -2,13 +2,13 @@
 
 use Illuminate\Http\Request;
 
-Route::group(['prefix'=>'v1', 'namespace'=>'Admin'], function(){
+Route::group(['prefix'=>'v1', 'namespace'=>'Admin', 'middleware' => 'cors'], function(){
 
     // Тауарлар каталогы маршруттары
     Route::get('/catalog', 'CatalogController@index');   // Барлық каталогтар тізімін көрсету
     Route::get('/catalog/{catalog}', 'CatalogController@show'); // Нақты бір каталог шығару
     Route::post('/catalog', 'CatalogController@store'); // Каталогты деректер қорына сақтау
-    Route::patch('/catalog/{catalog}', 'CatalogController@update'); // Деректер қорында бар каталогқа өзгерістер енгізу
+    Route::put('/catalog/{catalog}', 'CatalogController@update'); // Деректер қорында бар каталогқа өзгерістер енгізу
     Route::delete('/catalog/{catalog}', 'CatalogController@destroy'); // Деректер қорынан каталогты жою
 
 
@@ -17,11 +17,11 @@ Route::group(['prefix'=>'v1', 'namespace'=>'Admin'], function(){
     Route::get('/products-of-catalog', 'ProductController@products_of_catalog'); //Бір каталог құрамын кіретін тауарлар тізімін шығару
     Route::get('/product/{product}', 'ProductController@show'); // Нақты бір тауарды шығару
     Route::post('/product', 'ProductController@store'); // Тауарды деректер қорына сақтау
-    Route::patch('/product/{product}', 'ProductController@update'); // Деректер қорында бар тауарға өзгерістер енгізу
+    Route::put('/product/{product}', 'ProductController@update'); // Деректер қорында бар тауарға өзгерістер енгізу
     Route::delete('/product/{product}', 'ProductController@destroy'); // Деректер қоррынан тауарды жою
 
 
-    // Тауарлар каталогы маршруттары
+    // Ақпараттық парақшалар маршруттары
     Route::get('/information', 'InformationController@index');   // Барлық ақпарат парақшалары тізімін көрсету
     Route::get('/information/{information}', 'InformationController@show'); // Нақты бір ақпарат парақшасын  шығару
     Route::post('/information', 'InformationController@store'); // Ақпарат парақшасын деректер қорына сақтау
